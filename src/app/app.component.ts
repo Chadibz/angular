@@ -66,9 +66,12 @@ this.Formateur = response;
   }
 
   public onDeleteFormateur(formateurId: number): void {
+
     this.FormateurService.deleteFormateur(formateurId).subscribe(
+
       (response: void) => {
         console.log(response);
+        console.log("ssss");
         this.getFormateur();
       },
       (error: HttpErrorResponse) => {
@@ -78,13 +81,12 @@ this.Formateur = response;
   }
 
   public searchFormateurs(key: string): void {
-    console.log(key);
     const results: Formateur[] = [];
     for (const formateur of this.Formateur) {
       if (formateur.name.toLowerCase().indexOf(key.toLowerCase()) !== -1
       || formateur.email.toLowerCase().indexOf(key.toLowerCase()) !== -1
       || formateur.phone.toLowerCase().indexOf(key.toLowerCase()) !== -1
-      || formateur.junior.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
+      || formateur.specialite.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
         results.push(formateur);
       }
     }
